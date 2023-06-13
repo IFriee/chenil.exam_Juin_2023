@@ -19,3 +19,5 @@
         </nav>
         <div class="content" id="main-content">
             <!-- Contenu de la page -->
+</div>
+    

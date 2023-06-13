@@ -8,7 +8,7 @@ class Animal extends Entity {
     protected $numeroId;
     protected static $dao = "AnimalDAO";
     
-    public function __construct($nom, $sexe, $sterilise, $dateNaiss, $numeroId, $id = false) {
+    public function __construct($id = false, $nom, $sexe, $sterilise, $dateNaiss, $numeroId) {
         $this->id = $id;
         $this->nom = $nom;
         $this->sexe = $sexe;

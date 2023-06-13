@@ -2,14 +2,14 @@
 <table>
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>ID</th>
+            <th>Nom</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach($animaux as $animal): ?>
             <tr>
+                <td><?= $animal->id; ?></td>
                 <td><?= $animal->nom; ?></td>
                 <td><button class="xhr show" _id="<?= $animal->id; ?>">Show</button></td>
                 <td><button class="xhr edit" _id="<?= $animal->id; ?>">Edit</button></td>
