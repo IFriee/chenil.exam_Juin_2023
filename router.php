@@ -27,7 +27,7 @@ class Router {
         ];
         
         //liste des actions autorisées
-        $this->actions = ["index", "show", "create", "store", "edit", "update", "destroy"];
+        $this->actions = ["index", "create", "store", "edit", "update", "destroy"];
         
         $this->analyze(); 
         //$this->debug();
@@ -39,9 +39,10 @@ class Router {
         
         //Si pas de controlleur on part sur une 404
         if (!$this->detect_controller()) {
-            http_response_code(404);
+           /* http_response_code(404);
             var_dump('Page non trouvé');
-            die();
+            die();*/
+            var_dump($this->controller);
         }
         
         

@@ -16,11 +16,13 @@ $(document).ready(function() {
 
 
     function edit(id) {
-        $.get("/animaux/" + id + "/edit").done(function(result) {
-            $('.content').html(result);
-        }).fail(function(err) {
-            console.warn('error in edit', err);
-        });
+        $.get("/animaux/" + id + "/edit")
+            .done(function(result) {
+                $('.content').html(result);
+            })
+            .fail(function(err) {
+                console.warn('error in edit', err);
+            });
     }
     
 

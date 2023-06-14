@@ -1,2 +1,4 @@
-<h1>animal avec l'id ID <?= $animal->id ?> à été bien suprimmé</h1>
-<a href="/">Retour à la list</a>
+<h1 class="delete">L'animal <?= $animal->nom ?> à été bien euthanasié</h1>
+<p>C'est pas ce que vous vouliez faire?? Ho shit</p>
+<a href="/">Retour à la liste</a>
+<img src="/img/ho_no.png" alt="ho NOOO">

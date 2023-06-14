@@ -1,3 +1,4 @@
+<p class="important">Merci d'ajouter d'abord le propriétaire si il n'a pas encore été crée</p>
 <form action="/" method="post" class="store">
     <input type="text" name="nom" placeholder="Name">
     <input type="text" name="sexe" placeholder="Sexe">

@@ -7,14 +7,7 @@ class ProprietaireController {
         include '../views/proprietaires/P_list.php';
     }
     
-    //affiche un proprietaire
-    public function show ($id) {
-        $proprietaire = Proprietaire::find($id);
-        if ($proprietaire) {
-            return include '../views/proprietaires/P_one.php'; 
-        }
-        return include '../views/proprietaires/P_notfound.php';
-    }
+
     
     //affiche le formulaire de création
     public function create () {

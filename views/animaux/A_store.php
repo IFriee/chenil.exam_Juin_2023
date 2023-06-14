@@ -1,2 +1,2 @@
-<h1>New Animal Created with ID <?= $animal->id ?></h1>
-<a href="/">Back to list</a>
+<h1>Nouvel animal avec l'id <?= $animal->id ?> à  bien été enregistrer</h1>
+<a href="/">Retour à la liste</a>

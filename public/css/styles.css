@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #212121;
+    color: #fff;
 }
 
 #header {
@@ -21,27 +22,29 @@ body {
 }
 
 #main-nav {
-    background-color: #fff;
+    background-color: #333;
     padding: 10px 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 #main-nav a {
     display: inline-block;
     padding: 10px 20px;
-    color: #333;
+    margin-right: 10px;
+    color: #fff;
     font-weight: bold;
     transition: background-color 0.3s ease;
     text-decoration: none;
 }
 
 #main-nav a:hover {
-    background-color: #f0f0f0;
+    background-color: #444;
 }
 
 .content {
-    background-color: #fff;
+    background-color: #333;
     padding: 20px;
 }
 
@@ -50,14 +53,16 @@ table {
     border-collapse: collapse;
 }
 
-table th, table td {
+table th,
+table td {
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #555;
 }
 
 button.xhr {
     padding: 8px 16px;
-    background-color: #333;
+    margin-right: 10px;
+    background-color: #555;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -66,5 +71,5 @@ button.xhr {
 }
 
 button.xhr:hover {
-    background-color: #555;
+    background-color: #777;
 }
