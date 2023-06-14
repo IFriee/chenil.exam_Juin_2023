@@ -1,4 +1,4 @@
 </div>
-    <script src="/script/script.js"></script>
+    <script src="/scripts/script.js"></script>
     </body>
 </html>

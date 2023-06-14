@@ -7,14 +7,6 @@ class AnimalController {
         include '../views/animaux/A_list.php';
     }
     
-    //affiche un animal
-    public function show ($id) {
-        $animal = Animal::find($id);
-        if ($animal) {
-            return include '../views/animaux/A_one.php'; 
-        }
-        return include '../views/animaux/A_notfound.php';
-    }
     
     //affiche le formulaire de création
     public function create () {
@@ -33,8 +25,9 @@ class AnimalController {
     //sauvegarde un Animal
     public function store ($data) {
         if ($data && $data["nom"]) {
-            $animal = new Animal($data["nom"], $data['sexe'], $data['sterilise'], $data['dateNaiss'], $data['numeroId']);
-            $animal->save();
+            $sterilise = isset($data["sterilise"]) ? $data["sterilise"] : false;
+            $animal = new Animal($data["nom"], $data['sexe'], $sterilise, $data['datenaiss'], $data['numeroid']);
+                        $animal->save();
             return include '../views/animaux/A_store.php';
         }
         

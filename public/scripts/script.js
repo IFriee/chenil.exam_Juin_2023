@@ -13,13 +13,7 @@ $(document).ready(function() {
         }
     });
 
-    function show(id) {
-        $.get("/animaux/" + id).done(function(result) {
-            $('.content').html(result);
-        }).fail(function(err) {
-            console.warn('error in show', err);
-        });
-    }
+
 
     function edit(id) {
         $.get("/animaux/" + id + "/edit").done(function(result) {
@@ -28,6 +22,7 @@ $(document).ready(function() {
             console.warn('error in edit', err);
         });
     }
+    
 
     function create() {
         $.get("/animaux/create").done(function(result) {

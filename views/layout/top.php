@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="\css\styles.css">
         <meta charset="UTF-8">
         <title>Canifornie</title>
-        <link rel="stylesheet" href="../../public/css/styles.css">
         <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-
+<style> </style>
     </head>
     <body>
         <header id="header">
@@ -14,10 +14,11 @@
         </header>
         <nav id="main-nav">
             <a href="/">Animaux</a>
-            <a href="/">Propriétaires</a>
-            <a href="/">Séjours</a>
+            <a href="proprietaires">Propriétaires</a>
+            <a href="sejours">Séjours</a>
         </nav>
+
+        <br><br>
         <div class="content" id="main-content">
             <!-- Contenu de la page -->
-</div>
     
