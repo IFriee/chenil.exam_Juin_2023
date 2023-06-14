@@ -1,21 +1,22 @@
 <?php
 
 class Proprietaire extends Entity {
-    protected $id;
+
     protected $nom;
     protected $prenom;
     protected $datenaiss;
     protected $email;
     protected $tel;
+    protected $id;
     protected static $dao = "ProprietaireDAO";
     
-    public function __construct($id = false, $nom, $prenom, $datenaiss, $email, $tel) {
-        $this->id = $id;
+    public function __construct( $nom, $prenom, $datenaiss, $email, $tel, $id = false) {
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->dateNaiss = $datenaiss;
+        $this->datenaiss = $datenaiss;
         $this->email = $email;
         $this->tel = $tel;
+        $this->id = $id;
     }
     
 }

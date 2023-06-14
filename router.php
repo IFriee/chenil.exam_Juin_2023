@@ -39,10 +39,10 @@ class Router {
         
         //Si pas de controlleur on part sur une 404
         if (!$this->detect_controller()) {
-           /* http_response_code(404);
+            http_response_code(404);
             var_dump('Page non trouvé');
-            die();*/
-            var_dump($this->controller);
+            die();
+            //var_dump($this->controller);
         }
         
         

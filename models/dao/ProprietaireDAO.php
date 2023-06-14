@@ -6,6 +6,19 @@ public function __construct () {
     parent::__construct("proprietaires");
 }
 
+public function getAllIds() {
+    $statement = $this->db->prepare("SELECT Id FROM proprietaires");    
+    $statement->execute();
+    $ids = [];
+    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+        $ids[] = $row['Id'];
+    }
+    var_dump($ids);
+    return $ids;
+}
+
+
+
 public function store ($proprietaire) {  
     $statement = $this->db->prepare("INSERT INTO proprietaires (Nom, Prenom, DateNaiss, Email, Tel) VALUES (?, ?, ?, ?, ?)");
     return parent::insert($statement, [$proprietaire->nom, $proprietaire->prenom, $proprietaire->datenaiss, $proprietaire->email, $proprietaire->tel], $proprietaire);
@@ -21,12 +34,12 @@ public function create ($data) {
         return false;
     }
     return new Proprietaire(
-        $data["Id"] ?? false,
         $data["Nom"] ?? false,
         $data["Prenom"] ?? false,
         $data["DateNaiss"] ?? false,
         $data["Email"] ?? false,
-        $data["Tel"] ?? false
+        $data["Tel"] ?? false,
+        $data["Id"] ?? false
     );
 }
 }

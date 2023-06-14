@@ -10,6 +10,7 @@
             <th>Serilisé</th>
             <th>Date de Naissance</th>
             <th>N° Puce</th>
+            <th>Propriétaire ID</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
                 <td><?= $animal -> sterilise; ?></td>
                 <td><?= $animal -> datenaiss; ?></td>
                 <td><?= $animal -> numeroid; ?></td>
+                <td><?= $animal -> proprietaireid; ?></td>
                 <td><button class="xhr edit" _id="<?= $animal->id; ?>">Edit</button><button class="xhr delete" _id="<?= $animal->id; ?>">Delete</button></td>
             </tr>
         <?php endforeach; ?>
