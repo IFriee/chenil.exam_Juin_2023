@@ -1,29 +1,39 @@
-<h3>Modifier</h3>
-<form action="/update" method="post" class="update">
-
+<h3>Modifier les informations de l'animal</h3>
+<form action="/<?= $animal->id ?>/update" method="post" class="update">
     <table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Sexe</th>
-            <th>Serilisé</th>
-            <th>Date de Naissance</th>
-            <th>N° Puce</th>
-        </tr>
-    </thead>
-    <tbody>
+        <tbody>
             <tr>
+                <th>ID:</th>
                 <td><?= $animal->id ?></td>
-                <td><input type="text" name="name" value="<?= $animal->nom ?>"></td>
+            </tr>
+            <tr>
+                <th>Nom:</th>
+                <td><input type="text" name="nom" value="<?= $animal->nom ?>"></td>
+            </tr>
+            <tr>
+                <th>Sexe:</th>
                 <td><input type="text" name="sexe" value="<?= $animal->sexe ?>"></td>
+            </tr>
+            <tr>
+                <th>Stérilisé:</th>
                 <td><input type="checkbox" name="sterilise" value="<?= $animal->sterilize ?>"></td>
-                <td><input type="date" name="datenaiss" value="<?= $animal->datenaiss ?>" ></td>
-                <td><input type="text" name="sexe" value="<?= $animal->numeroid ?>"</td>
-
-
-    </tbody>
+            </tr>
+            <tr>
+                <th>Date de naissance:</th>
+                <td><input type="date" name="datenaiss" value="<?= $animal->datenaiss ?>"></td>
+            </tr>
+            <tr>
+                <th>Puce ID:</th>
+                <td><input type="number" name="numeroid" value="<?= $animal->numeroid ?>"></td>
+            </tr>
+            <tr>
+                <th>Propriétaire ID:</th>
+                <td>
+                </td>
+            </tr>
+        </tbody>
     </table>
 
     <input type="submit" value="Mettre à jour">
 </form>
+

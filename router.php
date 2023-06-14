@@ -42,7 +42,6 @@ class Router {
             http_response_code(404);
             var_dump('Page non trouvé');
             die();
-            //var_dump($this->controller);
         }
         
         
@@ -88,6 +87,7 @@ class Router {
         if (isset($this->url[0])) {
             if(is_numeric($this->url[0])) {
                 return $this->id = $this->url[0];
+                
             }
         }
         return false;
@@ -112,11 +112,12 @@ class Router {
             $this->controller->{$this->action}($this->data);
         }
         return $this->controller->{$this->action}($this->id, $this->data);
+        //return var_dump($this->id, $this->data);
     }
     
     private function debug () {
         var_dump($this->controller, $this->id, $this->action);
     }
-    
+  
     
 }

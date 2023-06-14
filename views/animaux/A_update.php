@@ -1,2 +1,2 @@
-<h1>Animal with ID <?= $animal->id ?> updated successfullyyyy</h1>
-<a href="/">Back to list</a>
+<h1>L'animal avec l'ID <?= $animal->id ?> à bien été mis à jour</h1>
+<a href="/">Retour à la liste</a>

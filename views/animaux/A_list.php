@@ -1,5 +1,5 @@
 <?php include('../views/layout/top.php'); ?>
-<h3>Liste</h3>
+<h3>Liste des animaux</h3>
 <button class="xhr create">New Animal</button>
 <table>
     <thead>

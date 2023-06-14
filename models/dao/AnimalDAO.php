@@ -14,7 +14,7 @@ class AnimalDAO extends DAO {
     
     public function update($animal) {
         $statement = $this->db->prepare("UPDATE animaux SET Nom = ?, Sexe = ?, Sterilise = ?, DateNaiss = ?, NumeroId = ?, ProprietaireId = ? WHERE Id = ?");
-        return parent::insert($statement, [$animal->nom, $animal->sexe, $animal->sterilise, $animal->datenaiss, $animal->numeroid, $animal->proprietaireId, $animal->id], $animal);
+        return parent::insert($statement, [$animal->nom, $animal->sexe, $animal->sterilise, $animal->datenaiss, $animal->numeroid, $animal->proprietaireid, $animal->id], $animal);
     }
     
     public function create($data) {

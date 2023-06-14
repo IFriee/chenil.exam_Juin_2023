@@ -6,16 +6,13 @@ public function __construct () {
     parent::__construct("proprietaires");
 }
 
-public function getAllIds() {
-    $statement = $this->db->prepare("SELECT Id FROM proprietaires");    
-    $statement->execute();
-    $ids = [];
-    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-        $ids[] = $row['Id'];
-    }
-    var_dump($ids);
-    return $ids;
-}
+
+
+
+
+
+
+
 
 
 

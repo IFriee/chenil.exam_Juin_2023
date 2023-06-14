@@ -8,16 +8,12 @@ class AnimalController {
     
 // affiche le formulaire de création
     public function create() {
-    $proprietaireDAO = new ProprietaireDAO();
-    $ids = $proprietaireDAO->getAllIds();
-
-    include '../views/animaux/A_create.php';
+        include '../views/animaux/A_create.php';
     }
-
 
     
     // affiche le formulaire d'édition
-    public function edit($id) {
+    public function edit ($id) {
         $animal = Animal::find($id);
         if ($animal) {
             return include '../views/animaux/A_edit.php';
@@ -26,30 +22,54 @@ class AnimalController {
     }
     
     // sauvegarde un Animal
-    public function store($data) {
-        if ($data && $data["nom"]) {
-            $sterilise = isset($data["sterilise"]) ? $data["sterilise"] : false;
-            $animal = new Animal($data["nom"], $data['sexe'], $sterilise, $data['datenaiss'], $data['numeroid'],$data['proprietaireid']);
-            $animal->save();
-            return include '../views/animaux/A_store.php';
-        }
-    }
     
-    // met à jour un animal
+    
     public function update($id, $data) {
         $animal = Animal::find($id);
         if ($animal) {
+            // Mise à jour des attributs de l'animal
             $animal->nom = $data["nom"] ?? $animal->nom;
             $animal->sexe = $data["sexe"] ?? $animal->sexe;
             $animal->sterilise = isset($data["sterilise"]) ? $data["sterilise"] : $animal->sterilise;
             $animal->dateNaiss = $data["datenaiss"] ?? $animal->datenaiss;
             $animal->numeroid = $data["numeroid"] ?? $animal->numeroid;
-            $animal->proprietaireid =$data['proprietaireid'] ?? $animal->proprietaireid;
-
+    
+    
             $animal->save();
             return include '../views/animaux/A_update.php';
         }
         return include '../views/animaux/A_notfound.php';
+    }
+    
+    public function store ($data) {
+        try {
+            if ($data && $data["nom"]) {
+                $sterilise = isset($data["sterilise"]) ? $data["sterilise"] : false;
+                
+                // Trouver le propriétaire en fonction de l'ID fourni dans le formulaire
+                $proprietaireid = $data['proprietaireid'];
+                
+                if ($proprietaireid) {
+                    $animal = new Animal($data["nom"], $data['sexe'], $sterilise, $data['datenaiss'], $data['numeroid'], $proprietaireid);
+                    
+                    // Enregistrer l'animal dans la base de données
+                    $animalDAO = new AnimalDAO();
+                    $animalDAO->store($animal);
+                    
+                    return include '../views/animaux/A_store.php';
+                } else {
+                    throw new Exception("Le propriétaire n'existe pas.");
+                }
+            } else {
+                throw new Exception("Il y a une erreur dans le formulaire.");
+            }
+        } catch (Exception $e) {
+            // Gérer l'erreur
+            $errorMessage = $e->getMessage();
+            // Afficher un message d'erreur ou rediriger vers une page d'erreur
+            // Par exemple:
+            return include '../views/error.php';
+        }
     }
     
     // supprime un animal
@@ -61,4 +81,6 @@ class AnimalController {
         }
         return include '../views/animaux/A_notfound.php';
     }
+
+
 }
