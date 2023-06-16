@@ -24,6 +24,17 @@
                 <td>Puce ID:</td>
                 <td><input type="number" name="numeroid" placeholder="Puce ID"></td>
             </tr>
+            <tr>
+            <td>Propriétaire:</td>
+            <td>
+                <select name="proprietaireid">
+                    <?php foreach ($proprietaires as $proprietaire): ?>
+                        <option value="<?php echo $proprietaire->id; ?>"><?php echo $proprietaire->nom; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+            </tr>
+
         </table>
         <input type="submit" value="Save">
 

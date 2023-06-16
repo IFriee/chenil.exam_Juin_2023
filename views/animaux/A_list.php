@@ -11,6 +11,7 @@
             <th>Date de Naissance</th>
             <th>N° Puce</th>
             <th>Propriétaire ID</th>
+            <th>Nom Propriétaires</th>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +24,15 @@
                 <td><?= $animal -> datenaiss; ?></td>
                 <td><?= $animal -> numeroid; ?></td>
                 <td><?= $animal -> proprietaireid; ?></td>
+                <td>
+                <?php
+                $proprietaireDAO = new ProprietaireDAO();
+                $proprietaire = $proprietaireDAO->fetch($animal->proprietaireid);
+                echo $proprietaire->nom;
+                ?>
+            </td>
                 <td><button class="xhr edit" _id="<?= $animal->id; ?>">Edit</button><button class="xhr delete" _id="<?= $animal->id; ?>">Delete</button></td>
+
             </tr>
         <?php endforeach; ?>
     </tbody>

@@ -8,6 +8,9 @@ class AnimalController {
     
 // affiche le formulaire de création
     public function create() {
+        $proprietaireDAO = new ProprietaireDAO();
+        $proprietaires = $proprietaireDAO->fetch_all();
+       
         include '../views/animaux/A_create.php';
     }
 
@@ -46,20 +49,11 @@ class AnimalController {
             if ($data && $data["nom"]) {
                 $sterilise = isset($data["sterilise"]) ? $data["sterilise"] : false;
                 
-                // Trouver le propriétaire en fonction de l'ID fourni dans le formulaire
-                $proprietaireid = $data['proprietaireid'];
                 
-                if ($proprietaireid) {
-                    $animal = new Animal($data["nom"], $data['sexe'], $sterilise, $data['datenaiss'], $data['numeroid'], $proprietaireid);
-                    
                     // Enregistrer l'animal dans la base de données
-                    $animalDAO = new AnimalDAO();
-                    $animalDAO->store($animal);
-                    
+            $animal = new Animal($data["nom"], $data['sexe'], $sterilise, $data['datenaiss'], $data['numeroid'],$data['proprietaireid']);
+                    $animal->save();
                     return include '../views/animaux/A_store.php';
-                } else {
-                    throw new Exception("Le propriétaire n'existe pas.");
-                }
             } else {
                 throw new Exception("Il y a une erreur dans le formulaire.");
             }

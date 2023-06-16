@@ -18,5 +18,26 @@ class Animal extends Entity {
         $this->proprietaireid = $proprietaireid;
         $this->id = $id;
     }
+   
+    //Les relations Onetomany
+    public function proprietaire() {
+        return $this->belongsTo(Proprietaire::class, 'proprietaireid');
+    }
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

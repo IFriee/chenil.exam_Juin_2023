@@ -10,12 +10,6 @@ public function __construct () {
 
 
 
-
-
-
-
-
-
 public function store ($proprietaire) {  
     $statement = $this->db->prepare("INSERT INTO proprietaires (Nom, Prenom, DateNaiss, Email, Tel) VALUES (?, ?, ?, ?, ?)");
     return parent::insert($statement, [$proprietaire->nom, $proprietaire->prenom, $proprietaire->datenaiss, $proprietaire->email, $proprietaire->tel], $proprietaire);

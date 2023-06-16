@@ -28,7 +28,7 @@ abstract class DAO {
         }
     }
     
-    public function fetch_all () {
+    public function fetch_all() {
         $statement = $this->db->prepare("SELECT * FROM {$this->table}");
         try {
             $statement->execute();
