@@ -23,14 +23,15 @@ class Router {
             "/" => "AnimalController",
             "animaux" => "AnimalController",
             "proprietaires" => "ProprietaireController",
-            "sejours" => "SejourController"
+            "sejours" => "SejourController",
+            "dashboard"=> "DashboardController" 
         ];
         
         //liste des actions autorisées
         $this->actions = ["index", "create", "store", "edit", "update", "destroy"];
         
         $this->analyze(); 
-        //$this->debug();
+        $this->debug();
         $this->run();
     }
     

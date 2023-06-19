@@ -1,12 +1,13 @@
 <?php
 class Animal extends Entity {
-    protected $id;
+  
     protected $nom;
     protected $sexe;
     protected $sterilise;
     protected $datenaiss;
     protected $numeroid;
     protected $proprietaireid;
+    protected $id;
     protected static $dao = "AnimalDAO";
     
     public function __construct($nom, $sexe, $sterilise, $datenaiss, $numeroid, $proprietaireid, $id = false) {
@@ -25,7 +26,9 @@ class Animal extends Entity {
     }
     
 
-
+    public function sejour() {
+        return $this->hasMany(Sejour::class, 'animalid', 'id');
+    }
 
 
 

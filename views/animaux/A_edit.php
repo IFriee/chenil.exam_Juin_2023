@@ -27,10 +27,18 @@
                 <td><input type="number" name="numeroid" value="<?= $animal->numeroid ?>"></td>
             </tr>
             <tr>
-                <th>Propriétaire ID:</th>
-                <td>
-                </td>
-            </tr>
+            <th>Propriétaire ID:</th>
+            <td>
+                <select name="proprietaireid">
+                    <?php foreach ($proprietaires as $proprietaire): ?>
+                        <option value="<?= $proprietaire->id ?>" <?= ($proprietaire->id == $animal->proprietaireid) ? 'selected' : '' ?>>
+                            <?= $proprietaire->id ?> - <?= $proprietaire->nom ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+        </tr>
+
         </tbody>
     </table>
 

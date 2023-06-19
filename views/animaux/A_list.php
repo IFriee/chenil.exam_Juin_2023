@@ -1,6 +1,7 @@
 <?php include('../views/layout/top.php'); ?>
 <h3>Liste des animaux</h3>
-<button class="xhr create">New Animal</button>
+<button class="xhr animal create">Nouveau Animal</button>
+<br>
 <table>
     <thead>
         <tr>
@@ -31,7 +32,7 @@
                 echo $proprietaire->nom;
                 ?>
             </td>
-                <td><button class="xhr edit" _id="<?= $animal->id; ?>">Edit</button><button class="xhr delete" _id="<?= $animal->id; ?>">Delete</button></td>
+                <td><button class="xhr animal edit" _id="<?= $animal->id; ?>">Edit</button><button class="xhr animal delete" _id="<?= $animal->id; ?>">Delete</button></td>
 
             </tr>
         <?php endforeach; ?>

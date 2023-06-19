@@ -21,7 +21,7 @@ class Proprietaire extends Entity {
     
 //relations
 
-    public function animaux() {
+    public function animal() {
         return $this->hasMany(Animal::class, 'proprietaireid', 'id');
     }
 

@@ -13,7 +13,8 @@
             <h2>Le chenil fait pour vos animaux</h2>
         </header>
         <nav id="main-nav">
-            <a href="/">Animaux</a>
+            <a href="dashboard">Dashboard</a>
+            <a href="animaux">Animaux</a>
             <a href="proprietaires">Propriétaires</a>
             <a href="sejours">Séjours</a>
         </nav>

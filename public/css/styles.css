@@ -70,6 +70,102 @@ button.xhr {
     transition: background-color 0.3s ease;
 }
 
+button.delete{
+    background-color: red;
+}
+
+button.edit{
+    background-color: rgb(173, 97, 5);
+}
+button.create {
+    background-color: green;
+    float: inline-end;
+}
+
+
 button.xhr:hover {
     background-color: #777;
 }
+
+
+.important{
+    color: red;
+    text-align: center;
+
+}
+
+
+
+
+
+  
+  /* Formulaire store*/
+  form.update ,
+  form.store {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  form.update table,
+  form.store table {
+    width: 30%;
+  }
+  form.udate td,
+  form.store td {
+    padding: 10px 0;
+  }
+  form.update input[type="text"],
+  form.update input[type="number"],
+  form.update select,
+  form.store input[type="text"],
+  form.store input[type="number"],
+  form.store select {
+    width: 100%;
+    padding: 8px;
+    background-color: #f2f2f2;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  form.update input[type="checkbox"],
+  form.store input[type="checkbox"] {
+    margin-top: 4px;
+  }
+  form.update input[type="submit"],
+  form.store input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  form.update input[type="submit"]:hover,
+  form.store input[type="submit"]:hover {
+    background-color: #777;
+  }
+  
+
+  
+  /* Masquer les lignes du tableau */
+  table {
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  
+  table th,
+  table td {
+    text-align: center;
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    white-space: nowrap;
+  }
+  
+  
+
+  
+  

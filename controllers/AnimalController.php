@@ -1,4 +1,5 @@
 <?php
+
 class AnimalController {
     // liste les animaux
     public function index() {
@@ -16,13 +17,16 @@ class AnimalController {
 
     
     // affiche le formulaire d'édition
-    public function edit ($id) {
+    public function edit($id) {
         $animal = Animal::find($id);
         if ($animal) {
+            $proprietaireDAO = new ProprietaireDAO();
+            $proprietaires = $proprietaireDAO->fetch_all();
             return include '../views/animaux/A_edit.php';
         }
         return include '../views/animaux/A_notfound.php';
     }
+    
     
     // sauvegarde un Animal
     
@@ -50,7 +54,7 @@ class AnimalController {
                 $sterilise = isset($data["sterilise"]) ? $data["sterilise"] : false;
                 
                 
-                    // Enregistrer l'animal dans la base de données
+
             $animal = new Animal($data["nom"], $data['sexe'], $sterilise, $data['datenaiss'], $data['numeroid'],$data['proprietaireid']);
                     $animal->save();
                     return include '../views/animaux/A_store.php';
@@ -60,8 +64,7 @@ class AnimalController {
         } catch (Exception $e) {
             // Gérer l'erreur
             $errorMessage = $e->getMessage();
-            // Afficher un message d'erreur ou rediriger vers une page d'erreur
-            // Par exemple:
+
             return include '../views/error.php';
         }
     }

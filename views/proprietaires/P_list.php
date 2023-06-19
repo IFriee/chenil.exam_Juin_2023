@@ -1,6 +1,6 @@
 <?php include('../views/layout/top.php'); ?>
-<h3>Liste</h3>
-<button class="xhr create">New Propriétaire</button>
+<h3>Liste des propriétaires</h3>
+<button class="xhr proprietaire create">Nouveau Propriétaire</button>
 <table>
     <thead>
         <tr>
@@ -17,11 +17,14 @@
             <tr>
                 <td><?= $proprietaire->id; ?></td>
                 <td><?= $proprietaire->nom; ?></td>
-                <td><?= $proprietaire -> prenom; ?></td>
-                <td><?= $proprietaire -> datenaiss; ?></td>
-                <td><?= $proprietaire -> email; ?></td>
-                <td><?= $proprietaire -> tel; ?></td>
-                <td><button class="xhr edit" _id="<?= $proprietaire->id; ?>">Edit</button><button class="xhr delete" _id="<?= $proprietaire->id; ?>">Delete</button></td>
+                <td><?= $proprietaire->prenom; ?></td>
+                <td><?= $proprietaire->datenaiss; ?></td>
+                <td><?= $proprietaire->email; ?></td>
+                <td><?= $proprietaire->tel; ?></td>
+                <td>
+                    <button class="xhr proprietaire edit" _id="<?= $proprietaire->id; ?>">Edit</button>
+                    <button class="xhr proprietaire delete" _id="<?= $proprietaire->id; ?>">Delete</button>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
