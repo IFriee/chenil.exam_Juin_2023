@@ -60,9 +60,6 @@ class ProprietaireController {
 }
     }
 
-    
-    
-
 
 
     public function update($id, $data) {
