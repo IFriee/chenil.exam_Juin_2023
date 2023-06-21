@@ -95,7 +95,9 @@ button.xhr:hover {
 }
 
 
-
+.error{
+  color: red;
+}
 
 
   

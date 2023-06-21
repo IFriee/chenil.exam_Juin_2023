@@ -105,6 +105,9 @@ abstract class DAO {
             return false;
         }
     }
+
+
+    
     
     public function intermediate ($table, $key, $value, $foreign) {
         $statement = $this->db->prepare("SELECT {$foreign} FROM {$table} WHERE {$key} = ?");

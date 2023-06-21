@@ -32,42 +32,98 @@ class AnimalController {
     
     
     public function update($id, $data) {
+
         $animal = Animal::find($id);
         if ($animal) {
-            // Mise à jour des attributs de l'animal
+            $errors = [];
+            $currentDate = new DateTime();
+            $dateNaiss = DateTime::createFromFormat('Y-m-d', $data["datenaiss"]);
+
+            if (!preg_match('/^[A-Z][a-zA-Z]*$/', $data["nom"])) {
+                $errors["nom"] = "Le nom doit commencer par une majuscule et ne doit contenir que des lettres.";
+            }
+            if (!preg_match('/^[a-zA-Z]*$/', $data["sexe"])) {
+                $errors["sexe"] = "Le sexe ne doit contenir que des lettres.";
+            }
+            if (!isset($data["sterilise"]) || ($data["sterilise"] != "1" && $data["sterilise"] != "0")) {
+                $errors["sterilise"] = "La valeur du champ 'sterilise' doit être soit '1' (oui) ou '0' (non).";
+            }
+            if (!$dateNaiss) {
+                $errors["datenaiss"] = "Le champ 'datenaiss' doit être au format 'Y-m-d' (ex : 2023-06-13).";
+            } else {
+                $diff = $dateNaiss->diff($currentDate);
+                if ($diff->y > 40) {
+                    $errors["datenaiss"] = "Votre animal ne peut pas être empaillé, veuillez rentrer une date inférieure à 40 ans.";
+                }
+            }
+   
+            if (!preg_match('/^[0-9]*$/', $data["numeroid"])) {
+                $errors["numeroid"] = "Le champ 'numeroid' ne doit contenir que des chiffres.";
+            }
+    
+            if (count($errors) > 0) {
+                // Il y a des erreurs, afficher le formulaire avec les erreurs
+                $proprietaireDAO = new ProprietaireDAO();
+                $proprietaires = $proprietaireDAO->fetch_all();
+                include '../views/layout/top.php';
+                include '../views/animaux/A_edit.php';
+                return;
+            }
+    
+            //if Pas d'erreur
             $animal->nom = $data["nom"] ?? $animal->nom;
             $animal->sexe = $data["sexe"] ?? $animal->sexe;
             $animal->sterilise = isset($data["sterilise"]) ? $data["sterilise"] : $animal->sterilise;
             $animal->dateNaiss = $data["datenaiss"] ?? $animal->datenaiss;
             $animal->numeroid = $data["numeroid"] ?? $animal->numeroid;
     
-    
             $animal->save();
+            
+            
             return include '../views/animaux/A_update.php';
         }
-        return include '../views/animaux/A_notfound.php';
+    
+        include '../views/animaux/A_notfound.php';
     }
     
-    public function store ($data) {
-        try {
-            if ($data && $data["nom"]) {
-                $sterilise = isset($data["sterilise"]) ? $data["sterilise"] : false;
-                
-                
-
-            $animal = new Animal($data["nom"], $data['sexe'], $sterilise, $data['datenaiss'], $data['numeroid'],$data['proprietaireid']);
-                    $animal->save();
-                    return include '../views/animaux/A_store.php';
-            } else {
-                throw new Exception("Il y a une erreur dans le formulaire.");
+    public function store($data) {
+        $errors = [];
+    
+        if ($data && $data["nom"]) {
+            if (!preg_match('/^[A-Z][a-zA-Z]*$/', $data["nom"])) {
+                $errors["nom"] = "Le nom doit commencer par une majuscule et ne doit contenir que des lettres.";
             }
-        } catch (Exception $e) {
-            // Gérer l'erreur
-            $errorMessage = $e->getMessage();
-
-            return include '../views/error.php';
+            if (!preg_match('/^[a-zA-Z]*$/', $data["sexe"])) {
+                $errors["sexe"] = "Le sexe ne doit contenir que des lettres.";
+            }
+            if (!isset($data["sterilise"]) || ($data["sterilise"] != "1" && $data["sterilise"] != "0")) {
+                $errors["sterilise"] = "La valeur du champ 'sterilise' doit être soit '1' (oui) ou '0' (non).";
+            }
+            if (!DateTime::createFromFormat('Y-m-d', $data["datenaiss"])) {
+                $errors["datenaiss"] = "Le champ 'datenaiss' doit être au format 'Y-m-d' (ex : 2023-06-13).";
+            }
+            if (!preg_match('/^[0-9]*$/', $data["numeroid"])) {
+                $errors["numeroid"] = "Le champ 'numeroid' ne doit contenir que des chiffres.";
+            }
+            // tableau error
+            if (count($errors) > 0) {
+                
+                $proprietaireDAO = new ProprietaireDAO();
+                $proprietaires = $proprietaireDAO->fetch_all();
+                include('../views/layout/top.php');
+                include '../views/animaux/A_create.php';
+                return;
+            }
+    
+            // Pas d'erreur, créer l'animal
+            $sterilise = isset($data["sterilise"]) && $data["sterilise"] ? true : false;
+            $animal = new Animal($data["nom"], $data['sexe'], $sterilise, $data['datenaiss'], $data['numeroid'], $data['proprietaireid']);
+            $animal->save();
+            return include '../views/animaux/A_store.php';
         }
     }
+    
+
     
     // supprime un animal
     public function destroy($id) {
