@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 24 juin 2023 à 12:09
+-- Généré le : sam. 24 juin 2023 à 12:49
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `animaux` (
   `ProprietaireId` int NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `ProprietaireId` (`ProprietaireId`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `animaux`
@@ -49,8 +49,7 @@ INSERT INTO `animaux` (`Id`, `Nom`, `Sexe`, `Sterilise`, `DateNaiss`, `NumeroId`
 (76, 'Lola', 'Femelle', 1, '0004-04-03', '434443', 7),
 (78, 'Crispy', 'Male', 0, '0333-03-03', '4433222', 7),
 (83, 'Daisy', 'Femelle', 1, '2022-10-03', '45894987497409', 15),
-(84, 'Eliott', 'ENORME', 1, '2006-03-03', '54334', 6),
-(85, 'We', 'ENORME', 0, '0444-04-04', '32', 17);
+(84, 'Eliott', 'ENORME', 1, '2006-03-03', '54334', 6);
 
 -- --------------------------------------------------------
 
@@ -67,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `proprietaires` (
   `Email` varchar(50) DEFAULT NULL,
   `Tel` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `proprietaires`
@@ -77,8 +76,7 @@ INSERT INTO `proprietaires` (`Id`, `Nom`, `Prenom`, `DateNaiss`, `Email`, `Tel`)
 (6, 'Wengler', 'Eliott', '1999-07-03', 'eliott.wengler@hotmail.fr', '0495742768'),
 (7, 'Benjamin', 'Delbar', '1930-03-03', 'centpourcent@eliott.com', '069696969'),
 (14, 'Bond', 'James', '1945-04-04', 'eliott.wengler@hotmail.fr', '0495742799'),
-(15, 'Iosif', 'Ally', '2003-12-12', 'alex@ifofosup.com', '0495742776'),
-(17, 'WenglerTEST', 'Eliott', '2015-04-04', 'eliott.wengler@hotmail.fr', '2495742768');
+(15, 'Iosif', 'Ally', '2003-12-12', 'alex@ifofosup.com', '0495742776');
 
 -- --------------------------------------------------------
 
@@ -94,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `sejours` (
   `AnimalId` int DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `AnimalId` (`AnimalId`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `sejours`
