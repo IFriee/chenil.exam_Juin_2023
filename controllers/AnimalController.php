@@ -50,6 +50,9 @@ class AnimalController {
             }
             if (!$dateNaiss) {
                 $errors["datenaiss"] = "Le champ 'datenaiss' doit être au format 'Y-m-d' (ex : 2023-06-13).";
+            if ($dateNaiss > $currentDate) {
+                $errors["datenaiss"] = "La date de naissance ne peut pas être dans le futur.";
+                }
             } else {
                 $diff = $dateNaiss->diff($currentDate);
                 if ($diff->y > 40) {
@@ -122,18 +125,28 @@ class AnimalController {
             return include '../views/animaux/A_store.php';
         }
     }
-    
 
-    
+
+
     // supprime un animal
-    public function destroy($id) {
-        $animal = Animal::find($id);
-        if ($animal) {
-            $animal->delete();
-            return include '../views/animaux/A_delete.php';
+    public function destroy($id)
+    {
+        $animaux = Animal::find($id);
+        $sejourDAO = new SejourDAO();
+        $sejours = $sejourDAO->where('AnimalId', $id); // Récupérer les animaux associés au propriétaire
+    
+        if ($animaux) {
+            if (is_array($sejours) && count($sejours) > 0) {
+                return include '../views/animaux/A_error.php';
+            } else {
+                $animaux->delete();
+                return include '../views/animaux/A_delete.php';
+            }
         }
+    
         return include '../views/animaux/A_notfound.php';
     }
+    
 
 
 }

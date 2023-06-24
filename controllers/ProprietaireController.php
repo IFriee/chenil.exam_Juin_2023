@@ -60,6 +60,9 @@ class ProprietaireController {
 }
     }
 
+    
+    
+
 
 
     public function update($id, $data) {
@@ -110,12 +113,25 @@ class ProprietaireController {
     
     
     //suppr un proprietaire
-    public function destroy ($id) {
+    public function destroy($id)
+    {
         $proprietaire = Proprietaire::find($id);
+        $animalDAO = new AnimalDAO();
+        $animaux = $animalDAO->where('ProprietaireId', $id); // Récupérer les animaux associés au propriétaire
+    
         if ($proprietaire) {
-            $proprietaire->delete();
-            return include '../views/proprietaires/P_delete.php';
+            if (is_array($animaux) && count($animaux) > 0) {
+                return include '../views/proprietaires/P_error.php';
+            } else {
+                $proprietaire->delete();
+                return include '../views/proprietaires/P_delete.php';
+            }
         }
+    
         return include '../views/proprietaires/P_notfound.php';
     }
+    
+
+
+
 }

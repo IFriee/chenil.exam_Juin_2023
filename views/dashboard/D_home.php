@@ -12,7 +12,8 @@
             <option value="<?= $proprietaire->id ?>"><?= $proprietaire->nom ?></option>
         <?php endforeach; ?>
     </select>
-    <input type="submit" value="Filtrer">
+    <input type="submit" value="Filtrer"> <p>NON FONCTIONNEL</p>
+
 </form>
 <?php
 if (isset($_GET['proprietaire'])) {
@@ -26,11 +27,11 @@ if (isset($_GET['proprietaire'])) {
 
 <br>
 
-<!-- Afficher le taux d'occupation pour une date en particulier -->
 <form action="/dashboard" method="get">
     <label for="date">Afficher le taux d'occupation pour une date en particulier :</label>
     <input type="date" name="date" id="date">
     <input type="submit" value="Afficher">
+    <p>NON FONCTIONNEL</p>
 </form>
 
 <br>

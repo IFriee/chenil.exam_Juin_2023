@@ -2,7 +2,7 @@
 <?php if (isset($errorMessage)): ?>
     <p class="error"><?= $errorMessage ?></p>
 <?php endif; ?>
-
+<p class="error">Merci d'ajouter d'abord le proprietaire si il n'est pas déja inscrit</p>
 <form action="/animaux" method="post" class="store">
     <table>
         <tr>
