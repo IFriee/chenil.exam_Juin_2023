@@ -108,9 +108,21 @@ class AnimalController {
             if (!preg_match('/^[0-9]*$/', $data["numeroid"])) {
                 $errors["numeroid"] = "Le champ 'numeroid' ne doit contenir que des chiffres.";
             }
-            // tableau error
+            
             if (count($errors) > 0) {
-                
+                $proprietaireDAO = new ProprietaireDAO();
+                $proprietaires = $proprietaireDAO->fetch_all();
+                include('../views/layout/top.php');
+                include '../views/animaux/A_create.php';
+                return;
+            }
+    
+            // Pas d'erreur, vérifier l'âge de l'animal
+            $dateNaiss = DateTime::createFromFormat('Y-m-d', $data["datenaiss"]);
+            $currentDate = new DateTime();
+            $diff = $dateNaiss->diff($currentDate);
+            if ($diff->y > 40) {
+                $errors["datenaiss"] = "Votre animal ne peut pas être empaillé, veuillez rentrer une date inférieure à 40 ans.";
                 $proprietaireDAO = new ProprietaireDAO();
                 $proprietaires = $proprietaireDAO->fetch_all();
                 include('../views/layout/top.php');
@@ -125,6 +137,7 @@ class AnimalController {
             return include '../views/animaux/A_store.php';
         }
     }
+    
 
 
 
