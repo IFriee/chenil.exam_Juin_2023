@@ -40,5 +40,23 @@ class DashboardController
     }
 
 
-        // non fonctionnel
+    function calculerPrixSejour($animalId, $nombreJours) {
+        // Récupérer l'animal depuis la base de données
+        $animal = Animal::find($animalId);
+        
+        // Vérifier si l'animal a un prix de séjour défini
+        if ($animal->prixsejourid) {
+            // Récupérer le prix de séjour depuis la base de données
+            $prixSejour = Prix::find($animal->prixsejourid);
+            
+            // Calculer le prix total du séjour
+            $prixTotal = $prixSejour->prix * $nombreJours;
+            
+            return $prixTotal;
+        } else {
+            // Si le prix de séjour n'est pas défini pour l'animal, retourner 0
+            return 0;
+        }
+    }
+    
 }

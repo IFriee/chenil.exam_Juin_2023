@@ -8,13 +8,13 @@ class AnimalDAO extends DAO {
 
 
     public function store($animal) {
-        $statement = $this->db->prepare("INSERT INTO animaux (Nom, Sexe, Sterilise, DateNaiss, NumeroId, ProprietaireId) VALUES (?, ?, ?, ?, ?, ?)");
-        return parent::insert($statement, [$animal->nom, $animal->sexe, $animal->sterilise, $animal->datenaiss, $animal->numeroid, $animal->proprietaireid], $animal);
+        $statement = $this->db->prepare("INSERT INTO animaux (Nom, Sexe, Sterilise, DateNaiss, NumeroId, ProprietaireId, PrixSejourId) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        return parent::insert($statement, [$animal->nom, $animal->sexe, $animal->sterilise, $animal->datenaiss, $animal->numeroid, $animal->proprietaireid,  $animal->prixsejourid], $animal);
     }
-    
+
     public function update($animal) {
-        $statement = $this->db->prepare("UPDATE animaux SET Nom = ?, Sexe = ?, Sterilise = ?, DateNaiss = ?, NumeroId = ?, ProprietaireId = ? WHERE Id = ?");
-        return parent::insert($statement, [$animal->nom, $animal->sexe, $animal->sterilise, $animal->datenaiss, $animal->numeroid, $animal->proprietaireid, $animal->id], $animal);
+        $statement = $this->db->prepare("UPDATE animaux SET Nom = ?, Sexe = ?, Sterilise = ?, DateNaiss = ?, NumeroId = ?, ProprietaireId = ?, PrixSejourId = ? WHERE Id = ?");
+        return parent::insert($statement, [$animal->nom, $animal->sexe, $animal->sterilise, $animal->datenaiss, $animal->numeroid, $animal->proprietaireid, $animal->prixsejourid, $animal->id], $animal);
     }
     
     public function create($data) {
@@ -28,6 +28,7 @@ class AnimalDAO extends DAO {
             $data["DateNaiss"] ?? false,
             $data["NumeroId"] ?? false,
             $data["ProprietaireId"] ?? false,
+            $data["PrisSejourId"] ?? false,
             $data["Id"] ?? false
         );
     }

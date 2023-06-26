@@ -63,6 +63,7 @@ class AnimalController {
             if (!preg_match('/^[0-9]*$/', $data["numeroid"])) {
                 $errors["numeroid"] = "Le champ 'numeroid' ne doit contenir que des chiffres.";
             }
+
     
             if (count($errors) > 0) {
                 // Il y a des erreurs, afficher le formulaire avec les erreurs
@@ -77,7 +78,7 @@ class AnimalController {
             $animal->nom = $data["nom"] ?? $animal->nom;
             $animal->sexe = $data["sexe"] ?? $animal->sexe;
             $animal->sterilise = isset($data["sterilise"]) ? $data["sterilise"] : $animal->sterilise;
-            $animal->dateNaiss = $data["datenaiss"] ?? $animal->datenaiss;
+            $animal->datenaiss = $data["datenaiss"] ?? $animal->datenaiss;
             $animal->numeroid = $data["numeroid"] ?? $animal->numeroid;
     
             $animal->save();
@@ -108,6 +109,7 @@ class AnimalController {
             if (!preg_match('/^[0-9]*$/', $data["numeroid"])) {
                 $errors["numeroid"] = "Le champ 'numeroid' ne doit contenir que des chiffres.";
             }
+
             
             if (count($errors) > 0) {
                 $proprietaireDAO = new ProprietaireDAO();
@@ -132,7 +134,7 @@ class AnimalController {
     
             // Pas d'erreur, créer l'animal
             $sterilise = isset($data["sterilise"]) && $data["sterilise"] ? true : false;
-            $animal = new Animal($data["nom"], $data['sexe'], $sterilise, $data['datenaiss'], $data['numeroid'], $data['proprietaireid']);
+            $animal = new Animal($data["nom"], $data['sexe'], $sterilise, $data['datenaiss'], $data['numeroid'], $data['proprietaireid'],$data['prixsejourid']);
             $animal->save();
             return include '../views/animaux/A_store.php';
         }

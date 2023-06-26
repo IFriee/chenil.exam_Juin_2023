@@ -40,6 +40,20 @@ $(document).ready(function() {
         }
     });
 
+
+         // redirection prix---------------------
+         $('button.prix').on('click', function() {
+            let id = $(this).attr('_id');
+            
+            if ($(this).hasClass('edit')) {
+                return editPrix(id);
+            } else if ($(this).hasClass('create')) {
+                return createPrix(); 
+            } else if ($(this).hasClass('delete')) {
+                return destroyPrix(id);
+            }
+        });
+    
     // -------------------animaux
     function editAnimal(id) {
         $.get("/animaux/" + id + "/edit").done(function(result) {
@@ -117,3 +131,27 @@ $(document).ready(function() {
         });
     }
 });
+// -------------------prix
+function editPrix(id) {
+    $.get("/prix/" + id + "/edit").done(function(result) {
+        $('.content').html(result);
+    }).fail(function(err) {
+        console.warn('error in edit', err);
+    });
+}
+
+function createPrix() {
+    $.get("/prix/create").done(function(result) {
+        $('.content').html(result);
+    }).fail(function(err) {
+        console.warn('error in create', err);
+    });
+}
+
+function destroyPrix(id) {
+    $.post("/prix/" + id + "/destroy").done(function(result) {
+        $('.content').html(result);
+    }).fail(function(err) {
+        console.warn('error in destroy', err);
+    });
+}

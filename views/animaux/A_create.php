@@ -60,6 +60,21 @@
                 <td class="error"><?= $errors['proprietaireid'] ?></td>
             <?php endif; ?>
         </tr>
+        <tr>
+            <td>Prix:</td>
+            <td>
+                <select name="prixsejourid" required>
+                    <?php foreach ($prix_sejours as $prix): ?>
+                        <option value="<?= $prix->id ?>">
+                            <?= $prix->prix . " - " . $prix->nom ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+            <?php if (isset($errors['prixsejourid'])): ?>
+                <td class="error"><?= $errors['prixsejourid'] ?></td>
+            <?php endif; ?>
+        </tr>
     </table>
     <input type="submit" value="Sauvegarder">
 </form>

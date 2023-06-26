@@ -17,6 +17,7 @@
             <a href="animaux">Animaux</a>
             <a href="proprietaires">Propriétaires</a>
             <a href="sejours">Séjours</a>
+            <a href="prix">Prix</a>
         </nav>
 
         <br><br>

@@ -60,6 +60,19 @@
                     </select>
                 </td>
             </tr>
+            <tr>
+                <th>Poid:</th>
+                <td>
+                    <select name="prixsejourid">
+                        <?php foreach ($prix as $prix): ?>
+                            <option value="<?= $prix->id ?>" <?= ($prix->id == $animal->prixsejourid) ? 'selected' : '' ?>>
+                                <?= $prix->prix ?> - <?= $proprietaire->nom ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>>
+            </tr>
+            <tr>
         </tbody>
     </table>
 
